@@ -10,7 +10,7 @@ class SongsController < ApplicationController
 
   # GET /songs/1
   def show
-    render json: @song
+    render json: @song, include: :crates
   end
 
   # POST /songs
@@ -26,12 +26,19 @@ class SongsController < ApplicationController
 
   # PATCH/PUT /songs/1
   def update
-    if @song.update(song_params)
-      render json: @song
-    else
-      render json: @song.errors, status: :unprocessable_entity
+    if params [:song_id]
+      @song = Song.find(params[:song_id])
+      @song.crates << @crate
+      render json: @song, include: :crates
+    elsif @crates.update(crate_params)
+      render json: @crate
+    else 
+      render json: @crate.errors, status: :unprocessable_entity
     end
   end
+  
+
+
 
   # DELETE /songs/1
   def destroy

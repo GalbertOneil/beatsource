@@ -5,6 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Song.create artist:'Prince', title:'When The Doves Cries', format:'mp3'
 
 p "created #{Song.count} number of songs"

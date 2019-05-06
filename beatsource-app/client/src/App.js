@@ -1,33 +1,42 @@
-import React from 'react';
-// import AudioPlayer from 'react-cl-audio-player';
+import React, { Component } from 'react'
 import './App.css';
-import musicFile from './NeverFarFromYou.mp3';
-import Sound from 'react-sound'
+import { Route, Link } from 'react-router-dom'
+import { withRouter } from 'react-router'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import Display from './components/Display'
+import { showSong } from './serivces/api-helper'
 
-function App() {
-  // const songs = [
-  //   {
-  //     url: musicFile,
-  //     cover: '',
-  //     artist: {
-  //       name: 'Ted Edwards',
-  //       song: 'Never Far From You'
-  //     }
-  //   }
-  // ];
 
+class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+        crates:[],
+        songs:[],
+    }
+}
+
+    componentDidMount(){
+      this.getSongs()
+    }
+
+    async getSongs() {
+        const songs = await showSong();
+        this.setState({ songs })
+      }
+
+render(){
   return (
     <div className="App">
-      {/* <AudioPlayer
-          songs={songs}
-          autoplay
-        /> */}
-      <Sound
-        playStatus="PLAYING"
-        url="./NeverFarFromYou.mp3"
-        autoPlay={true}/>  
+    <Header />
+    <Display songs = {this.state.songs} />
+    <Footer />
+    
+       
     </div>
   );
+  }
 }
 
 export default App;
