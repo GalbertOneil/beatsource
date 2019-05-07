@@ -4,7 +4,7 @@ export class Footer extends Component {
   render() {
     return (
       <div className='footer'>
-        <p>Beatsource created by Galbert ONeil.</p>
+        <h3 className='footerText'>Beatsource created by Galbert ONeil.</h3>
       </div>
     )
   }
