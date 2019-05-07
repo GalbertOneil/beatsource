@@ -4,17 +4,16 @@ import React from 'react'
 
 function Display (props) {
   
-    
-
-
- 
+   
     return (
-      <div className='diplay--tracks'>
+      <div className='display--tracks'>
         {props.songs.map(song => (
-            <div className='Tracks'>
-                <p>{song.artist}</p>
-                <p>{song.title}</p>
-                <p>{song.format}</p>
+            <div>
+                <div className='tracks'>
+                    <span>{song.artist}</span>
+                    <span>{song.title}</span>
+                    <span>{song.format}</span>
+                </div>
             </div>
         ))}
       </div>

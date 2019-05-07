@@ -6,6 +6,9 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Display from './components/Display'
 import { showSong } from './serivces/api-helper'
+import Carousel from './components/Carousel';
+
+
 
 
 class App extends Component {
@@ -30,6 +33,7 @@ render(){
   return (
     <div className="App">
     <Header />
+    <Carousel />
     <Display songs = {this.state.songs} />
     <Footer />
     
