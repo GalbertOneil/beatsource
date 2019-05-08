@@ -13,7 +13,7 @@ class Header extends Component {
           this.props.currentUser
           ?
           <>
-          <p className='username'>{this.props.currentUser.username}</p>
+          <p className='username'>Hi, {this.props.currentUser.username}</p>
           <button className='logOutHeaderButton' onClick={this.props.handleLogout}>Logout</button>
           </>
           :
