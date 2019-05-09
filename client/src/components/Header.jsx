@@ -15,7 +15,7 @@ class Header extends Component {
           <>
           <p className='username'>Hi, {this.props.currentUser.username}</p>
           <button className='logOutHeaderButton' onClick={this.props.handleLogout}>Logout</button>
-          <button className='uploadHeaderButton' onClick={this.props.uploadSong}>Upload</button>
+          <button className='uploadHeaderButton' onClick={() => this.props.history.push('/upload')}>Upload</button>
           </>
           :
           
