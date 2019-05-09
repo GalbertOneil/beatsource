@@ -18,7 +18,7 @@ function Display(props) {
       {props.songs.map(song => (
         <div className='tracks'>
           <button className='playButton' onClick={props.play}>Play</button>
-          <button className='deleteButton' onClick={props.deleteSong}>Delete</button>
+          <button className='deleteButton' onClick={props.deleteSong(song.id)}>Delete</button>
           <span className='display-artist'>{song.artist}</span>
           <span className='display-songTitle'>{song.title}</span>
           <span className='display-format'>{song.format}</span>

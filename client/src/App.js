@@ -136,17 +136,27 @@ class App extends Component {
     }))
   }
 
- async deleteSong (songItem) {
-   console.log(songItem)
-   await destroySong(songItem.id);
-   const index = this.state.songs.indexOf(songItem);
-   const songArray = this.state.songs
-   songArray.splice(index, 1);
-   this.setState({
-     songs: songArray
-   })
- }
-
+//  async deleteSong (songItem) {
+//    console.log(songItem)
+//    await destroySong(songItem.id);
+//    const index = this.state.songs.indexOf(songItem);
+//    const songArray = this.state.songs
+//    songArray.splice(index, 1);
+//    this.setState({
+//      songs: songArray
+//    })
+//  }
+async deleteSong (songItem) {
+  console.log(songItem)
+  await destroySong(songItem);
+  this.getSongs();
+  // const index = this.state.songs.indexOf(songItem);
+  // const songArray = this.state.songs
+  // songArray.splice(index, 1);
+  // this.setState({
+  //   songs: songArray
+  // })
+}
   // deleteSong() {
   //   console.log('delete')
   // }

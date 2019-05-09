@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3000";
+const baseUrl = "https://beatsource-app.herokuapp.com";
 
 
 export const showSong = () => {
@@ -65,7 +65,7 @@ export const loginUser = (loginData) => {
       }
     }
   
-    return fetch(`${baseUrl}/songs/:id${id}`, opts)
+    return fetch(`${baseUrl}/songs/${id}`, opts)
       .catch(e => e)
   }
 
