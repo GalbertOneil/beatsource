@@ -6,5 +6,5 @@ Is a MP3 online store where artists can upload their own music and sell it.
 - As an user i use **Beatsource** to download music of my favorites artist to listen or play on my dj gigs.
 
 # Wireframes
-![wireframe](../images/beatsourcewireframe.jpeg)
+![wireframe](client/src/images/beatsource%20wireframe.jpeg)
 
