@@ -9,13 +9,15 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Display from './components/Display'
 import Carousel from './components/Carousel';
-import UploadSongForm from './components/UploadSongForm'
+import UploadSongForm from './components/UploadSongForm';
+import UpdateSongForm from './components/UpdateSongForm'
 import {
   loginUser,
   registerUser,
   showSong,
   addSong,
-  destroySong
+  destroySong,
+  updateSong
 } from './services/api-helper';
 
 
@@ -34,7 +36,14 @@ class App extends Component {
         artist: '',
         title: '',
         format: ''
-      }
+      },
+      formData: {
+        id: '',
+        artist: '',
+        title: '',
+        format:''
+      },
+      isEdit:false
     }
     this.handleLoginButton = this.handleLoginButton.bind(this);
     this.authHandleChange = this.authHandleChange.bind(this);
@@ -44,6 +53,10 @@ class App extends Component {
     this.uploadHandleChange = this.uploadHandleChange.bind(this);
     this.uploadSong = this.uploadSong.bind(this);
     this.deleteSong = this.deleteSong.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.editSong = this.editSong.bind(this);
+    this.toggleEdit = this.toggleEdit.bind(this);
+    this.setSongForm = this.setSongForm.bind(this)
   }
 
   handleLoginButton() {
@@ -107,15 +120,18 @@ class App extends Component {
 
   handleChange(e) {
     const { name, value } = e.target;
-    this.setState({ formData: { [name]: value } });
+    this.setState(prevState => ({
+      formData: {
+        ...prevState.formData,
+        [name]: value
+      }
+    }));
   }
 
 
 
   async getSongs() {
     const songs = await showSong();
-    console.log(songs)
-
     this.setState({
       songs
     })
@@ -123,9 +139,7 @@ class App extends Component {
 
   async uploadSong(e) {
     e.preventDefault()
-    // console.log(this.state.uploadForm)
     const newSong = await addSong(this.state.uploadForm)
-    // console.log(newSong)
     this.setState(prevState => ({
       songs: [...prevState.songs, newSong],
       UploadForm: {
@@ -140,9 +154,34 @@ class App extends Component {
 
 
 async deleteSong (songItem) {
-  console.log(songItem)
   await destroySong(songItem);
   this.getSongs();
+}
+
+async editSong () {
+  let data = {
+      id: this.state.formData.id,
+      artist: this.state.formData.artist,
+      title: this.state.formData.title,
+      format: this.state.formData.format,
+  }
+  await updateSong(data);
+  this.setState({isEdit: false})
+  this.getSongs();
+  this.props.history.push("/")
+}
+
+setSongForm (songItem) {
+  this.setState({formData: {
+    id: songItem.id,
+    artist: songItem.artist,
+    title: songItem.title,
+    format: songItem.artist
+  } })
+}
+
+toggleEdit(){
+  this.setState({isEdit: true})
 }
 
   render() {
@@ -173,10 +212,26 @@ async deleteSong (songItem) {
           uploadSong={this.uploadSong} />
         )} />
 
+         <Route exact path="/update" render={(props) => (
+           <UpdateSongForm 
+           handleChange={this.handleChange} 
+           editSong={this.editSong}
+           formData={this.state.formData} />
+         )} />
+
+       
         <Route exact path='/' render={() => (
           <>
             <Carousel />
-            <Display songs={this.state.songs} play={this.play} deleteSong={this.deleteSong} />
+            <Display 
+            songs={this.state.songs}
+            deleteSong={this.deleteSong}
+            toggleEdit={this.toggleEdit} 
+            isEdit={this.state.isEdit}
+            handleChange={this.handleChange} 
+            editSong={this.editSong}
+            formData={this.state.formData}
+            setSongForm={this.setSongForm} />
           </>
         )} />
 

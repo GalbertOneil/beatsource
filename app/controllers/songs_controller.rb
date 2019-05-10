@@ -26,14 +26,10 @@ class SongsController < ApplicationController
 
   # PATCH/PUT /songs/1
   def update
-    if params [:song_id]
-      @song = Song.find(params[:song_id])
-      @song.crates << @crate
-      render json: @song, include: :crates
-    elsif @crates.update(crate_params)
-      render json: @crate
+    if @song.update(song_params)
+      render json: @song
     else 
-      render json: @crate.errors, status: :unprocessable_entity
+      render json: @song.errors, status: :unprocessable_entity
     end
   end
   
@@ -53,6 +49,6 @@ class SongsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def song_params
-      params.require(:song).permit(:artist, :title, :format)
+      params.require(:song).permit(:id, :artist, :title, :format)
     end
 end

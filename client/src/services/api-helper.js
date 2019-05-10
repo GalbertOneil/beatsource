@@ -1,4 +1,4 @@
-const baseUrl = "https://beatsource-app.herokuapp.com";
+const baseUrl = "http://localhost:3000";
 
 
 export const showSong = () => {
@@ -69,4 +69,19 @@ export const loginUser = (loginData) => {
       .catch(e => e)
   }
 
-  
+  // ---------------- EDIT ---------------------------
+
+  export const updateSong = (data) => {
+    const opts = {
+      method: 'PUT',
+      body: JSON.stringify({song: data}),
+      headers: {
+        'Content-Type':'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+      }
+    }
+    console.log(data)
+    return fetch(`${baseUrl}/songs/${data.id}`, opts)
+    .catch(e => e)
+  }
+    

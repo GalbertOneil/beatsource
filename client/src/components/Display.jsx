@@ -1,5 +1,7 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
+import UpdateSongForm from './UpdateSongForm';
 
 
 function Display(props) {
@@ -17,7 +19,11 @@ function Display(props) {
 
       {props.songs.map(song => (
         <div className='tracks'>
-          <button className='playButton' onClick={props.play}>Play</button>
+         <button onClick={() => {
+            props.setSongForm(song)
+            props.history.push("/update")
+         }} className='playButton' >Edit</button>
+
           <button className='deleteButton' onClick={() => props.deleteSong(song.id)}>Delete</button>
           <span className='display-artist'>{song.artist}</span>
           <span className='display-songTitle'>{song.title}</span>
@@ -29,4 +35,4 @@ function Display(props) {
 
 }
 
-export default Display
+export default withRouter(Display)
