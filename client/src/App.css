@@ -17,6 +17,7 @@
   display: flex;
   align-items: baseline;
   margin-left: 22px;
+  
 }
 
 
@@ -56,20 +57,17 @@
 
 .playButton{
   border-radius: 50px;
-  margin-left: -188px;
+  
 
 }
 .deleteButton{
   border-radius: 50px;
-  margin-left: -392px;
+ 
 }
 
 
 .display-artist{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-left: -362px;
+  
 }
 
 .display--tracks{
@@ -84,12 +82,13 @@
 
 .tracks{
   font-family: 'Abril Fatface', cursive;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: .1fr .1fr 1fr 1fr 1fr;
+  /* justify-content: space-around; */
   border-collapse: collapse;
-  border: .5px solid #95B0B4 ;
+  border: .5px solid #95B0B4;
   padding: 8px;
+  grid-gap: 10px;
    
   
 }
