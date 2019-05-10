@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './App.css';
-import { Route, Link } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import { withRouter } from 'react-router'
 import decode from 'jwt-decode';
 import Login from './components/Login'
