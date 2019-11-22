@@ -19,6 +19,7 @@ import {
   destroySong,
   updateSong
 } from './services/api-helper';
+import { Welcome } from './components/Welcome';
 
 
 class App extends Component {
@@ -218,6 +219,8 @@ toggleEdit(){
            editSong={this.editSong}
            formData={this.state.formData} />
          )} />
+
+         {/* <Welcome/> */}
 
        
         <Route exact path='/' render={() => (

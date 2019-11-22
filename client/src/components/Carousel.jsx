@@ -25,6 +25,7 @@ export default () => {
                 <div className="gallery__image"><img className='slides' src={stevie} alt="gallery" /></div>
                 <div className="gallery__image"><img className='slides'src={jose} alt="gallery" /></div>
             </Carousel>
+            
         </div>
     )
 }

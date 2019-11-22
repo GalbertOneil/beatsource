@@ -10,7 +10,7 @@ const UploadSongForm = (props) => {
         <input name="artist" type="text" placeholder="artist" onChange={props.handleChange}/>
         <input name="title" type="title" placeholder="title" onChange={props.handleChange}/>
         <input name="format" type="format" placeholder="format" onChange={props.handleChange}/>
-        <button className='uploadSongButton'>Upload</button>
+        <button className='uploadSongButton'>UPLOAD</button>
       </form>
     </div>
   );
