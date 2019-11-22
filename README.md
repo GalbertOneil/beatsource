@@ -6,7 +6,7 @@ Is a MP3 online store where artists can upload their own music and sell it.
 - As an user i use **Beatsource** to download music of my favorites artist to listen or play on my dj gigs.
 
 # Wireframes
-![wireframe](client/src/images/beatsource%20wireframe.jpeg)
+![wireframe](client/src/images/beatsourcewireframe.jpeg)
 
 # ERD
 ![beatsourceERD](client/src/images/beatsource_erd.jpg)
@@ -16,3 +16,6 @@ Is a MP3 online store where artists can upload their own music and sell it.
 
 # Citation
 I use npm package React Responsive Carousel on the Carousel.jsx for display the album cover on the display.jsx
+
+# App
+[beatsource](http://beatsource.surge.sh)
